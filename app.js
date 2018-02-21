@@ -13,12 +13,11 @@ const argv = yargs
   .help()
   .alias('help', 'h').argv;
 
-console.log(argv);
+let encodedAddress = encodeURIComponent(argv.a);
 
 request(
   {
-    url:
-      'https://maps.googleapis.com/maps/api/geocode/json?address=new%20era%20society%20pune',
+    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`,
     json: true
   },
   (error, response, body) => {
